@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.calculator-panel {
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.calculator-panel .buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.calculator-panel .buttons :last-child {
+  background-color: #005fba;
+  color: white;
+}
+
+.calculator-panel button {
+  padding: 15px 20px;
+  font-size: 1.2em;
+  border: 0.5px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  flex: 1;
+}
+
+.calculator-panel button:active {
+  background-color: #eee;
+}

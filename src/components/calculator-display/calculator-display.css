@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.calculator-display {
+  color: #333;
+  padding: 20px;
+  text-align: right;
+  font-size: 3em;
+  overflow-x: auto;
+}

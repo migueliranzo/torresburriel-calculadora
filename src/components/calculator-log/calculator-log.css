@@ -1,0 +1,80 @@
+.log ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log li {
+  font-size: 1.2em;
+  color: #666;
+  padding: 10px;
+  font-size: 1.2em;
+  color: #666;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.log li span:last-child {
+  font-size: 1.5em;
+  color: black;
+}
+
+.log button {
+  padding: 1rem;
+  border: none;
+  background: none;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+@keyframes fade-in {
+  0% {
+    bottom: -5%;
+    opacity: 0%;
+  }
+
+  100% {
+    bottom: 0%;
+    opacity: 100%;
+  }
+}
+
+
+@keyframes fade-out {
+  0% {
+    bottom: 0%;
+    opacity: 100%;
+  }
+
+  100% {
+    bottom: -5%;
+    opacity: 0%;
+    display: none;
+  }
+}
+
+.log-texts {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  background: white;
+  justify-content: start;
+  height: 50%;
+  flex-direction: column;
+  align-items: end;
+  left: 0;
+  border-radius: 5px 5px 0 0;
+  overflow-y: auto;
+}
+
+.log .show-log {
+  animation: 0.15s fade-in ease-in forwards;
+}
+
+
+.log .hide-log {
+  animation: 0.1s fade-out ease-in forwards;
+}

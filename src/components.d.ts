@@ -6,56 +6,109 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface AppComponent {
+    }
+    interface CalculatorDisplay {
+        "value": string;
+    }
+    interface CalculatorLog {
+        "history": { operation: string, result: string }[];
+        "visiblity": boolean;
+    }
+    interface CalculatorPanel {
     }
 }
+export interface CalculatorLogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCalculatorLogElement;
+}
+export interface CalculatorPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCalculatorPanelElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAppComponentElement extends Components.AppComponent, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAppComponentElement: {
+        prototype: HTMLAppComponentElement;
+        new (): HTMLAppComponentElement;
+    };
+    interface HTMLCalculatorDisplayElement extends Components.CalculatorDisplay, HTMLStencilElement {
+    }
+    var HTMLCalculatorDisplayElement: {
+        prototype: HTMLCalculatorDisplayElement;
+        new (): HTMLCalculatorDisplayElement;
+    };
+    interface HTMLCalculatorLogElementEventMap {
+        "logBtnClicked": boolean;
+    }
+    interface HTMLCalculatorLogElement extends Components.CalculatorLog, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCalculatorLogElementEventMap>(type: K, listener: (this: HTMLCalculatorLogElement, ev: CalculatorLogCustomEvent<HTMLCalculatorLogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCalculatorLogElementEventMap>(type: K, listener: (this: HTMLCalculatorLogElement, ev: CalculatorLogCustomEvent<HTMLCalculatorLogElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCalculatorLogElement: {
+        prototype: HTMLCalculatorLogElement;
+        new (): HTMLCalculatorLogElement;
+    };
+    interface HTMLCalculatorPanelElementEventMap {
+        "numberBtnClicked": string;
+    }
+    interface HTMLCalculatorPanelElement extends Components.CalculatorPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCalculatorPanelElementEventMap>(type: K, listener: (this: HTMLCalculatorPanelElement, ev: CalculatorPanelCustomEvent<HTMLCalculatorPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCalculatorPanelElementEventMap>(type: K, listener: (this: HTMLCalculatorPanelElement, ev: CalculatorPanelCustomEvent<HTMLCalculatorPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCalculatorPanelElement: {
+        prototype: HTMLCalculatorPanelElement;
+        new (): HTMLCalculatorPanelElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "app-component": HTMLAppComponentElement;
+        "calculator-display": HTMLCalculatorDisplayElement;
+        "calculator-log": HTMLCalculatorLogElement;
+        "calculator-panel": HTMLCalculatorPanelElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface AppComponent {
+    }
+    interface CalculatorDisplay {
+        "value"?: string;
+    }
+    interface CalculatorLog {
+        "history"?: { operation: string, result: string }[];
+        "onLogBtnClicked"?: (event: CalculatorLogCustomEvent<boolean>) => void;
+        "visiblity"?: boolean;
+    }
+    interface CalculatorPanel {
+        "onNumberBtnClicked"?: (event: CalculatorPanelCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "app-component": AppComponent;
+        "calculator-display": CalculatorDisplay;
+        "calculator-log": CalculatorLog;
+        "calculator-panel": CalculatorPanel;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "app-component": LocalJSX.AppComponent & JSXBase.HTMLAttributes<HTMLAppComponentElement>;
+            "calculator-display": LocalJSX.CalculatorDisplay & JSXBase.HTMLAttributes<HTMLCalculatorDisplayElement>;
+            "calculator-log": LocalJSX.CalculatorLog & JSXBase.HTMLAttributes<HTMLCalculatorLogElement>;
+            "calculator-panel": LocalJSX.CalculatorPanel & JSXBase.HTMLAttributes<HTMLCalculatorPanelElement>;
         }
     }
 }
